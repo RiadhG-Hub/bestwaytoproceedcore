@@ -1,17 +1,20 @@
 library bestwaytoproceed;
 
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:image_picker/image_picker.dart';
 
+import 'models/way_data.dart';
+
 class ImageComparison {
   final String apiKey;
 
   ImageComparison(this.apiKey);
 
-  Future<String?> compareImages({required List<XFile> images}) async {
+  Future<WayData?> compareImages({required XFile images}) async {
     // log('selecting the first image');
     // final XFile? firstImageFile = await _picker.pickImage(source: ImageSource.gallery);
     // log("selecting the second image ");
@@ -24,7 +27,7 @@ class ImageComparison {
       //    return;
       //  }
 
-      final firstImage = await File(images.first.path).readAsBytes();
+      final image = await File(images.path).readAsBytes();
       //final secondImage = await File(images.last.path).readAsBytes();
 
       final model = GenerativeModel(model: 'gemini-1.5-flash', apiKey: apiKey);
@@ -42,14 +45,17 @@ class ImageComparison {
           "return all data only in developed json and remove json word and keep this form as a model : {safety_percentage: 44,proceed_phrase: ex,road_type: ex,government_advice: ex,low_cost_improvement: ex,accuracy_improvement: ex}");
       //and keep this as a model {safety_percentage: 1 best_way_to_proceed: Use a cane or guide dog to navigate the uneven terrain., road_type : Natural pathway, phrase_improvement: Caution: Uneven terrain and potential for falls.}
       final imageParts = [
-        DataPart('image/jpeg', firstImage),
-        //DataPart('image/jpeg', secondImage),
+        DataPart('image/jpeg', image),
       ];
 
       final response = await model.generateContent([
         Content.multi([prompt, ...imageParts])
       ]);
-      return response.text;
+      final result = response.text;
+      final jsonResult = jsonDecode(result!);
+      log('the json result: $jsonResult');
+      final modelResult = WayData.fromJson(jsonResult);
+      return modelResult;
     } catch (e, s) {
       log("error: $e, stack: $s");
       return null;
