@@ -21,7 +21,6 @@ class ImageComparison {
     // final XFile? secondImageFile = await _picker.pickImage(source: ImageSource.gallery);
 
     try {
-      log('done selecting images ');
       //  if (firstImageFile == null || secondImageFile == null) {
       //    print('Image selection canceled');
       //    return;
@@ -34,6 +33,7 @@ class ImageComparison {
 
       final prompt = TextPart(
           "Analyze the provided images and determine if the scene represents a safe and appropriate time for a blind person to proceed. "
+          "Consider the presence of clear pathways, absence of obstacles, adequate lighting, and any other elements that might affect safety and ease of navigation."
           "Consider factors such as the presence of clear pathways, absence of obstacles, adequate lighting, and any other elements that might affect safety and ease of navigation. "
           "Please provide a detailed explanation of your analysis."
           "provide the percentage of safety for the next 5 meters"
@@ -42,7 +42,7 @@ class ImageComparison {
           "suggest me an advice for government to improve indications "
           "suggest an idea for government improvements that would likely cost less than 100 USD?"
           "suggest me an advice to improve the accuracy of the output for the next use to add it here"
-          "return all data only in developed json and remove json word and keep this form as a model : {safety_percentage: 44,proceed_phrase: ex,road_type: ex,government_advice: ex,low_cost_improvement: ex,accuracy_improvement: ex}");
+          "return all data only in developed json and remove json word and keep this form as a model ${jsonEncode(const WayData(safetyPercentage: 40, proceedPhrase: "example", roadType: "example", governmentAdvice: 'example', lowCostImprovement: "example", accuracyImprovement: "example").toJson())}");
       //and keep this as a model {safety_percentage: 1 best_way_to_proceed: Use a cane or guide dog to navigate the uneven terrain., road_type : Natural pathway, phrase_improvement: Caution: Uneven terrain and potential for falls.}
       final imageParts = [
         DataPart('image/jpeg', image),
