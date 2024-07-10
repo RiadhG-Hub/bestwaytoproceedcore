@@ -42,8 +42,8 @@ class ImageComparison {
           "Consider whether the road is intended for pedestrians or vehicles. "
           "Suggest an advice for the government to improve indications. "
           "Suggest an idea for government improvements that would likely cost less than 100 USD. "
-          "Suggest an advice to improve the accuracy of the output for the next use to add it here. "
-          "Return all data only in a developed JSON format and remove the JSON word, keeping this form as a model ${jsonEncode(const WayData(safetyPercentage: 40, proceedPhrase: 'example', roadType: 'example', governmentAdvice: 'example', lowCostImprovement: 'example', accuracyImprovement: 'example').toJson())}.");
+          "Suggest specific  input text to improve the gemini output in this case"
+          "Return all data only in a developed JSON format and remove the JSON word, keeping this form as a model and the safety_percentage should be int ${jsonEncode(const WayData(safetyPercentage: 6).toJson())}.");
 
       final imageParts = [
         DataPart('image/jpeg', imageResult),

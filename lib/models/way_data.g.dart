@@ -14,6 +14,9 @@ _$WayDataImpl _$$WayDataImplFromJson(Map<String, dynamic> json) =>
       governmentAdvice: json['government_advice'] as String?,
       lowCostImprovement: json['low_cost_improvement'] as String?,
       accuracyImprovement: json['accuracy_improvement'] as String?,
+      aiImprovement:
+          json['specific_gemini_input_text_to_improve_output_in_this_case']
+              as String?,
     );
 
 Map<String, dynamic> _$$WayDataImplToJson(_$WayDataImpl instance) =>
@@ -24,4 +27,6 @@ Map<String, dynamic> _$$WayDataImplToJson(_$WayDataImpl instance) =>
       'government_advice': instance.governmentAdvice,
       'low_cost_improvement': instance.lowCostImprovement,
       'accuracy_improvement': instance.accuracyImprovement,
+      'specific_gemini_input_text_to_improve_output_in_this_case':
+          instance.aiImprovement,
     };
