@@ -1,39 +1,63 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Best Way To Proceed
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A Flutter package to return a predefined JSON model and accept image and text as input. This package simplifies working with JSON data, allowing you to efficiently handle images and text inputs within your Flutter application.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Accepts image and text inputs.
+- Returns a predefined JSON model.
+- Easy integration with existing Flutter projects.
+- Lightweight and fast performance.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+### Prerequisites
+
+- Flutter SDK: Ensure you have Flutter installed. You can download it [here](https://flutter.dev/docs/get-started/install).
+- Dart SDK: Make sure Dart is installed and up to date.
+
+### Installation
+
+Add this to your package's `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  git:
+  url: https://github.com/riadhrahma/bestwaytoproceedcore.git
+  ref: dev
+```
+
+Then, run the following command:
+
+```bash
+flutter pub get
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Here's a simple example to get you started:
 
 ```dart
-const like = 'sample';
+ const apiKey = "your api key";
+ImageComparison comparator = ImageComparison(apiKey);
+final result = await comparator.compareImages(image: imageResult);
+log('AI analysis result: $result');
 ```
+
+
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+For more information, please visit our [documentation](https://github.com/riadhrahma/bestwaytoproceedcore/doc).
+
+### Contributing
+
+We welcome contributions!
+
+### Filing Issues
+
+If you encounter any issues, please file them [here](https://github.com/riadhrahma/bestwaytoproceedcore/issues). Our team will respond as quickly as possible.
+
+For further inquiries or support, reach out to [gharbiriadh16@gmail.com](mailto:gharbiriadh16@gmail.com).
+
+Happy coding!
