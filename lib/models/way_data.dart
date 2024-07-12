@@ -12,8 +12,10 @@ class WayData with _$WayData {
     @JsonKey(name: 'government_advice') String? governmentAdvice,
     @JsonKey(name: 'low_cost_improvement') String? lowCostImprovement,
     @JsonKey(name: 'accuracy_improvement') String? accuracyImprovement,
-    @JsonKey(name: 'specific_gemini_input_text_to_improve_output_in_this_case') String? aiImprovement,
+    @JsonKey(name: 'specific_gemini_input_text_to_improve_output_in_this_case')
+    String? aiImprovement,
   }) = _WayData;
 
-  factory WayData.fromJson(Map<String, Object?> json) => _$WayDataFromJson(json);
+  factory WayData.fromJson(Map<String, Object?> json) =>
+      _$WayDataFromJson(json);
 }
