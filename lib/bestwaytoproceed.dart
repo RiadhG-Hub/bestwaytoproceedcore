@@ -1,16 +1,15 @@
 library bestwaytoproceed;
 
 import 'dart:convert';
-import 'dart:developer';
-import 'dart:io';
+import 'dart:developer' as developer;
 
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'models/way_data.dart';
 
-/// A class that compares images to analyze and determine the safety
-/// of a given scene for a blind person to proceed.
+/// A class that analyzes images to determine the safety of a scene
+/// for a blind person to proceed.
 class ImageComparison {
   /// The API key for the generative AI model.
   final String apiKey;
@@ -18,47 +17,48 @@ class ImageComparison {
   /// Constructs an instance of [ImageComparison] with the provided [apiKey].
   ImageComparison(this.apiKey);
 
-  /// Compares the provided image and returns the analysis as [WayData].
+  /// Analyzes the provided image and returns the safety data as [WayData].
   ///
-  /// The analysis includes factors such as the presence of clear pathways,
-  /// absence of obstacles, adequate lighting, and other elements affecting safety
-  /// and ease of navigation.
+  /// The analysis considers factors like clear pathways, obstacles, lighting,
+  /// and other elements affecting safety and navigation.
   ///
-  /// Returns `null` if an error occurs during the process.
-  ///
-  /// [image] is the image file to be analyzed.
-  Future<WayData?> compareImages({required XFile image}) async {
+  /// Returns `null` if an error occurs.
+  Future<WayData?> analyzeImage(XFile image) async {
     try {
-      final imageResult = await File(image.path).readAsBytes();
+      final imageBytes = await image.readAsBytes();
 
-      final model = GenerativeModel(model: 'gemini-1.5-flash', apiKey: apiKey);
+      final model = GenerativeModel(
+        model: 'gemini-1.5-flash',
+        apiKey: apiKey,
+      );
 
       final prompt = TextPart(
-          "Analyze the provided images and determine if the scene represents a safe and appropriate time for a blind person to proceed. "
-          "Consider the presence of clear pathways, absence of obstacles, adequate lighting, and any other elements that might affect safety and ease of navigation. "
-          "Please provide a detailed explanation of your analysis. "
-          "Provide the percentage of safety for the next 5 meters. "
-          "Describe the best way to proceed in a short phrase. "
-          "Consider whether the road is intended for pedestrians or vehicles. "
-          "Suggest an advice for the government to improve indications. "
-          "Suggest an idea for government improvements that would likely cost less than 100 USD. "
-          "Suggest specific  input text to improve the gemini output in this case"
-          "Return all data only in a developed JSON format and remove the JSON word, keeping this form as a model and the safety_percentage should be int ${jsonEncode(const WayData(safetyPercentage: 6).toJson())}.");
+        "Analyze the image and determine if the scene is safe for a blind person to proceed. "
+        "Consider clear pathways, obstacles, lighting, and other safety factors. "
+        "Provide a detailed analysis, including the safety percentage for the next 5 meters, "
+        "the best way to proceed (e.g., 'just a little bit to the right'), "
+        "whether the road is intended for pedestrians or vehicles, "
+        "advice for government improvement under \$100 USD, "
+        "specific input text to improve future predictions, "
+        "and all data in a formatted JSON response excluding the 'JSON' word. "
+        "Use the following format as a model: "
+        "${jsonEncode(const WayData().toJson())}"
+        "Replace '...' with the actual data.",
+      );
 
-      final imageParts = [
-        DataPart('image/jpeg', imageResult),
-      ];
+      final imageParts = [DataPart('image/jpeg', imageBytes)];
 
       final response = await model.generateContent([
         Content.multi([prompt, ...imageParts])
       ]);
+
       final result = response.text;
       final jsonResult = jsonDecode(result!);
-      log('The JSON result: $jsonResult');
-      final modelResult = WayData.fromJson(jsonResult);
-      return modelResult;
-    } catch (e, s) {
-      log('Error: $e, stack: $s');
+      developer.log('JSON result: $jsonResult');
+
+      return WayData.fromJson(jsonResult);
+    } catch (error, stacktrace) {
+      developer.log('Error: $error, Stacktrace: $stacktrace');
       return null;
     }
   }
