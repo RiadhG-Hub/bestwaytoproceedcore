@@ -33,18 +33,16 @@ class ImageComparison {
       );
 
       final prompt = TextPart(
-        "Analyze the image and determine if the scene is safe for a blind person to proceed. "
-        "Consider clear pathways, obstacles, lighting, and other safety factors. "
-        "Provide a detailed analysis, including the safety percentage for the next 5 meters, "
-        "the best way to proceed (e.g., 'just a little bit to the right'), "
-        "whether the road is intended for pedestrians or vehicles, "
-        "advice for government improvement under \$100 USD, "
-        "specific input text to improve future predictions, "
-        "and all data in a formatted JSON response excluding the 'JSON' word. "
-        "Use the following format as a model: "
-        "${jsonEncode(const WayData().toJson())}"
-        "Replace '...' with the actual data.",
-      );
+          "Analyze the provided images and determine if the scene represents a safe and appropriate time for a blind person to proceed. "
+          "Consider the presence of clear pathways, absence of obstacles, adequate lighting, and any other elements that might affect safety and ease of navigation. "
+          "Please provide a detailed explanation of your analysis. "
+          "Provide the percentage of safety for the next 5 meters. "
+          "Describe the best way to proceed in a short phrase. "
+          "Consider whether the road is intended for pedestrians or vehicles. "
+          "Suggest an advice for the government to improve indications. "
+          "Suggest an idea for government improvements that would likely cost less than 100 USD. "
+          "Suggest an advice to improve the accuracy of the output for the next use to add it here. "
+          "Return all data only in a developed JSON format and remove the JSON word, keeping this form as a model ${jsonEncode(const WayData(safetyPercentage: 40, proceedPhrase: 'example', roadType: 'example', governmentAdvice: 'example', lowCostImprovement: 'example', accuracyImprovement: 'example').toJson())}.");
 
       final imageParts = [DataPart('image/jpeg', imageBytes)];
 
