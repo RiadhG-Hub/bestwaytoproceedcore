@@ -26,13 +26,15 @@ mixin _$WayData {
   String? get proceedPhrase => throw _privateConstructorUsedError;
   @JsonKey(name: 'road_type')
   String? get roadType => throw _privateConstructorUsedError;
-  @JsonKey(name: 'government_advice')
-  String? get governmentAdvice => throw _privateConstructorUsedError;
-  @JsonKey(name: 'low_cost_improvement')
-  String? get lowCostImprovement => throw _privateConstructorUsedError;
-  @JsonKey(name: 'accuracy_improvement')
-  String? get accuracyImprovement => throw _privateConstructorUsedError;
-  @JsonKey(name: 'specific_gemini_input_text_to_improve_output_in_this_case')
+  @JsonKey(name: 'details')
+  String? get details => throw _privateConstructorUsedError; // New field
+  @JsonKey(name: 'alternative_route')
+  String? get alternativeRoute =>
+      throw _privateConstructorUsedError; // New field
+  @JsonKey(name: 'objects_from_right_to_left')
+  List<String>? get objects =>
+      throw _privateConstructorUsedError; // Renamed field
+  @JsonKey(name: 'ai_improvement')
   String? get aiImprovement => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,12 +51,10 @@ abstract class $WayDataCopyWith<$Res> {
       {@JsonKey(name: 'safety_percentage') int? safetyPercentage,
       @JsonKey(name: 'proceed_phrase') String? proceedPhrase,
       @JsonKey(name: 'road_type') String? roadType,
-      @JsonKey(name: 'government_advice') String? governmentAdvice,
-      @JsonKey(name: 'low_cost_improvement') String? lowCostImprovement,
-      @JsonKey(name: 'accuracy_improvement') String? accuracyImprovement,
-      @JsonKey(
-          name: 'specific_gemini_input_text_to_improve_output_in_this_case')
-      String? aiImprovement});
+      @JsonKey(name: 'details') String? details,
+      @JsonKey(name: 'alternative_route') String? alternativeRoute,
+      @JsonKey(name: 'objects_from_right_to_left') List<String>? objects,
+      @JsonKey(name: 'ai_improvement') String? aiImprovement});
 }
 
 /// @nodoc
@@ -73,9 +73,9 @@ class _$WayDataCopyWithImpl<$Res, $Val extends WayData>
     Object? safetyPercentage = freezed,
     Object? proceedPhrase = freezed,
     Object? roadType = freezed,
-    Object? governmentAdvice = freezed,
-    Object? lowCostImprovement = freezed,
-    Object? accuracyImprovement = freezed,
+    Object? details = freezed,
+    Object? alternativeRoute = freezed,
+    Object? objects = freezed,
     Object? aiImprovement = freezed,
   }) {
     return _then(_value.copyWith(
@@ -91,18 +91,18 @@ class _$WayDataCopyWithImpl<$Res, $Val extends WayData>
           ? _value.roadType
           : roadType // ignore: cast_nullable_to_non_nullable
               as String?,
-      governmentAdvice: freezed == governmentAdvice
-          ? _value.governmentAdvice
-          : governmentAdvice // ignore: cast_nullable_to_non_nullable
+      details: freezed == details
+          ? _value.details
+          : details // ignore: cast_nullable_to_non_nullable
               as String?,
-      lowCostImprovement: freezed == lowCostImprovement
-          ? _value.lowCostImprovement
-          : lowCostImprovement // ignore: cast_nullable_to_non_nullable
+      alternativeRoute: freezed == alternativeRoute
+          ? _value.alternativeRoute
+          : alternativeRoute // ignore: cast_nullable_to_non_nullable
               as String?,
-      accuracyImprovement: freezed == accuracyImprovement
-          ? _value.accuracyImprovement
-          : accuracyImprovement // ignore: cast_nullable_to_non_nullable
-              as String?,
+      objects: freezed == objects
+          ? _value.objects
+          : objects // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       aiImprovement: freezed == aiImprovement
           ? _value.aiImprovement
           : aiImprovement // ignore: cast_nullable_to_non_nullable
@@ -122,12 +122,10 @@ abstract class _$$WayDataImplCopyWith<$Res> implements $WayDataCopyWith<$Res> {
       {@JsonKey(name: 'safety_percentage') int? safetyPercentage,
       @JsonKey(name: 'proceed_phrase') String? proceedPhrase,
       @JsonKey(name: 'road_type') String? roadType,
-      @JsonKey(name: 'government_advice') String? governmentAdvice,
-      @JsonKey(name: 'low_cost_improvement') String? lowCostImprovement,
-      @JsonKey(name: 'accuracy_improvement') String? accuracyImprovement,
-      @JsonKey(
-          name: 'specific_gemini_input_text_to_improve_output_in_this_case')
-      String? aiImprovement});
+      @JsonKey(name: 'details') String? details,
+      @JsonKey(name: 'alternative_route') String? alternativeRoute,
+      @JsonKey(name: 'objects_from_right_to_left') List<String>? objects,
+      @JsonKey(name: 'ai_improvement') String? aiImprovement});
 }
 
 /// @nodoc
@@ -144,9 +142,9 @@ class __$$WayDataImplCopyWithImpl<$Res>
     Object? safetyPercentage = freezed,
     Object? proceedPhrase = freezed,
     Object? roadType = freezed,
-    Object? governmentAdvice = freezed,
-    Object? lowCostImprovement = freezed,
-    Object? accuracyImprovement = freezed,
+    Object? details = freezed,
+    Object? alternativeRoute = freezed,
+    Object? objects = freezed,
     Object? aiImprovement = freezed,
   }) {
     return _then(_$WayDataImpl(
@@ -162,18 +160,18 @@ class __$$WayDataImplCopyWithImpl<$Res>
           ? _value.roadType
           : roadType // ignore: cast_nullable_to_non_nullable
               as String?,
-      governmentAdvice: freezed == governmentAdvice
-          ? _value.governmentAdvice
-          : governmentAdvice // ignore: cast_nullable_to_non_nullable
+      details: freezed == details
+          ? _value.details
+          : details // ignore: cast_nullable_to_non_nullable
               as String?,
-      lowCostImprovement: freezed == lowCostImprovement
-          ? _value.lowCostImprovement
-          : lowCostImprovement // ignore: cast_nullable_to_non_nullable
+      alternativeRoute: freezed == alternativeRoute
+          ? _value.alternativeRoute
+          : alternativeRoute // ignore: cast_nullable_to_non_nullable
               as String?,
-      accuracyImprovement: freezed == accuracyImprovement
-          ? _value.accuracyImprovement
-          : accuracyImprovement // ignore: cast_nullable_to_non_nullable
-              as String?,
+      objects: freezed == objects
+          ? _value._objects
+          : objects // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       aiImprovement: freezed == aiImprovement
           ? _value.aiImprovement
           : aiImprovement // ignore: cast_nullable_to_non_nullable
@@ -189,12 +187,11 @@ class _$WayDataImpl implements _WayData {
       {@JsonKey(name: 'safety_percentage') this.safetyPercentage,
       @JsonKey(name: 'proceed_phrase') this.proceedPhrase,
       @JsonKey(name: 'road_type') this.roadType,
-      @JsonKey(name: 'government_advice') this.governmentAdvice,
-      @JsonKey(name: 'low_cost_improvement') this.lowCostImprovement,
-      @JsonKey(name: 'accuracy_improvement') this.accuracyImprovement,
-      @JsonKey(
-          name: 'specific_gemini_input_text_to_improve_output_in_this_case')
-      this.aiImprovement});
+      @JsonKey(name: 'details') this.details,
+      @JsonKey(name: 'alternative_route') this.alternativeRoute,
+      @JsonKey(name: 'objects_from_right_to_left') final List<String>? objects,
+      @JsonKey(name: 'ai_improvement') this.aiImprovement})
+      : _objects = objects;
 
   factory _$WayDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$WayDataImplFromJson(json);
@@ -209,21 +206,33 @@ class _$WayDataImpl implements _WayData {
   @JsonKey(name: 'road_type')
   final String? roadType;
   @override
-  @JsonKey(name: 'government_advice')
-  final String? governmentAdvice;
+  @JsonKey(name: 'details')
+  final String? details;
+// New field
   @override
-  @JsonKey(name: 'low_cost_improvement')
-  final String? lowCostImprovement;
+  @JsonKey(name: 'alternative_route')
+  final String? alternativeRoute;
+// New field
+  final List<String>? _objects;
+// New field
   @override
-  @JsonKey(name: 'accuracy_improvement')
-  final String? accuracyImprovement;
+  @JsonKey(name: 'objects_from_right_to_left')
+  List<String>? get objects {
+    final value = _objects;
+    if (value == null) return null;
+    if (_objects is EqualUnmodifiableListView) return _objects;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+// Renamed field
   @override
-  @JsonKey(name: 'specific_gemini_input_text_to_improve_output_in_this_case')
+  @JsonKey(name: 'ai_improvement')
   final String? aiImprovement;
 
   @override
   String toString() {
-    return 'WayData(safetyPercentage: $safetyPercentage, proceedPhrase: $proceedPhrase, roadType: $roadType, governmentAdvice: $governmentAdvice, lowCostImprovement: $lowCostImprovement, accuracyImprovement: $accuracyImprovement, aiImprovement: $aiImprovement)';
+    return 'WayData(safetyPercentage: $safetyPercentage, proceedPhrase: $proceedPhrase, roadType: $roadType, details: $details, alternativeRoute: $alternativeRoute, objects: $objects, aiImprovement: $aiImprovement)';
   }
 
   @override
@@ -237,12 +246,10 @@ class _$WayDataImpl implements _WayData {
                 other.proceedPhrase == proceedPhrase) &&
             (identical(other.roadType, roadType) ||
                 other.roadType == roadType) &&
-            (identical(other.governmentAdvice, governmentAdvice) ||
-                other.governmentAdvice == governmentAdvice) &&
-            (identical(other.lowCostImprovement, lowCostImprovement) ||
-                other.lowCostImprovement == lowCostImprovement) &&
-            (identical(other.accuracyImprovement, accuracyImprovement) ||
-                other.accuracyImprovement == accuracyImprovement) &&
+            (identical(other.details, details) || other.details == details) &&
+            (identical(other.alternativeRoute, alternativeRoute) ||
+                other.alternativeRoute == alternativeRoute) &&
+            const DeepCollectionEquality().equals(other._objects, _objects) &&
             (identical(other.aiImprovement, aiImprovement) ||
                 other.aiImprovement == aiImprovement));
   }
@@ -254,9 +261,9 @@ class _$WayDataImpl implements _WayData {
       safetyPercentage,
       proceedPhrase,
       roadType,
-      governmentAdvice,
-      lowCostImprovement,
-      accuracyImprovement,
+      details,
+      alternativeRoute,
+      const DeepCollectionEquality().hash(_objects),
       aiImprovement);
 
   @JsonKey(ignore: true)
@@ -278,11 +285,10 @@ abstract class _WayData implements WayData {
       {@JsonKey(name: 'safety_percentage') final int? safetyPercentage,
       @JsonKey(name: 'proceed_phrase') final String? proceedPhrase,
       @JsonKey(name: 'road_type') final String? roadType,
-      @JsonKey(name: 'government_advice') final String? governmentAdvice,
-      @JsonKey(name: 'low_cost_improvement') final String? lowCostImprovement,
-      @JsonKey(name: 'accuracy_improvement') final String? accuracyImprovement,
-      @JsonKey(
-          name: 'specific_gemini_input_text_to_improve_output_in_this_case')
+      @JsonKey(name: 'details') final String? details,
+      @JsonKey(name: 'alternative_route') final String? alternativeRoute,
+      @JsonKey(name: 'objects_from_right_to_left') final List<String>? objects,
+      @JsonKey(name: 'ai_improvement')
       final String? aiImprovement}) = _$WayDataImpl;
 
   factory _WayData.fromJson(Map<String, dynamic> json) = _$WayDataImpl.fromJson;
@@ -297,16 +303,16 @@ abstract class _WayData implements WayData {
   @JsonKey(name: 'road_type')
   String? get roadType;
   @override
-  @JsonKey(name: 'government_advice')
-  String? get governmentAdvice;
-  @override
-  @JsonKey(name: 'low_cost_improvement')
-  String? get lowCostImprovement;
-  @override
-  @JsonKey(name: 'accuracy_improvement')
-  String? get accuracyImprovement;
-  @override
-  @JsonKey(name: 'specific_gemini_input_text_to_improve_output_in_this_case')
+  @JsonKey(name: 'details')
+  String? get details;
+  @override // New field
+  @JsonKey(name: 'alternative_route')
+  String? get alternativeRoute;
+  @override // New field
+  @JsonKey(name: 'objects_from_right_to_left')
+  List<String>? get objects;
+  @override // Renamed field
+  @JsonKey(name: 'ai_improvement')
   String? get aiImprovement;
   @override
   @JsonKey(ignore: true)

@@ -11,12 +11,12 @@ _$WayDataImpl _$$WayDataImplFromJson(Map<String, dynamic> json) =>
       safetyPercentage: (json['safety_percentage'] as num?)?.toInt(),
       proceedPhrase: json['proceed_phrase'] as String?,
       roadType: json['road_type'] as String?,
-      governmentAdvice: json['government_advice'] as String?,
-      lowCostImprovement: json['low_cost_improvement'] as String?,
-      accuracyImprovement: json['accuracy_improvement'] as String?,
-      aiImprovement:
-          json['specific_gemini_input_text_to_improve_output_in_this_case']
-              as String?,
+      details: json['details'] as String?,
+      alternativeRoute: json['alternative_route'] as String?,
+      objects: (json['objects_from_right_to_left'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      aiImprovement: json['ai_improvement'] as String?,
     );
 
 Map<String, dynamic> _$$WayDataImplToJson(_$WayDataImpl instance) =>
@@ -24,9 +24,8 @@ Map<String, dynamic> _$$WayDataImplToJson(_$WayDataImpl instance) =>
       'safety_percentage': instance.safetyPercentage,
       'proceed_phrase': instance.proceedPhrase,
       'road_type': instance.roadType,
-      'government_advice': instance.governmentAdvice,
-      'low_cost_improvement': instance.lowCostImprovement,
-      'accuracy_improvement': instance.accuracyImprovement,
-      'specific_gemini_input_text_to_improve_output_in_this_case':
-          instance.aiImprovement,
+      'details': instance.details,
+      'alternative_route': instance.alternativeRoute,
+      'objects_from_right_to_left': instance.objects,
+      'ai_improvement': instance.aiImprovement,
     };

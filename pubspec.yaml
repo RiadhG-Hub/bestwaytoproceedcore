@@ -1,29 +1,27 @@
 name: bestwaytoproceed
 description: "A new Flutter project."
 version: 0.0.1
-homepage:
+homepage: # Add your project's homepage URL here.
 
 environment:
   sdk: '>=3.4.1 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
-  camera: ^0.11.0+1
+  camera: ^0.11.0+1  # A Flutter plugin for accessing device cameras.
   flutter:
     sdk: flutter
-  google_generative_ai: ^0.4.3
-  image_picker: ^1.1.2
-  build_runner: ^2.4.11
-  freezed: ^2.5.2
-  freezed_annotation: ^2.4.2
-  json_annotation: ^4.9.0
+  google_generative_ai: ^0.4.3  # Google's Generative AI package for Dart.
+  image_picker: ^1.1.2  # A Flutter plugin for picking images from the image library, and taking new pictures with the camera.
+  build_runner: ^2.4.11  # A build system for Dart code generation.
+  freezed: ^2.5.2  # Code generation for immutable classes in Dart.
+  freezed_annotation: ^2.4.2  # Annotations for freezed package.
+  json_annotation: ^4.9.0  # Annotations for JSON serialization.
 
 dev_dependencies:
   flutter_test:
-    sdk: flutter
-  flutter_lints: ^3.0.0
-  json_serializable: ^6.8.0
+    sdk: flutter  # A library for writing tests in Flutter.
+  flutter_lints: ^3.0.0  # Lints for Flutter projects.
+  json_serializable: ^6.8.0  # A package to generate JSON serialization code.
 
-
-flutter:
 
