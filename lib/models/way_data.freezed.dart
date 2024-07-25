@@ -35,7 +35,27 @@ mixin _$WayData {
   List<String>? get objects =>
       throw _privateConstructorUsedError; // Renamed field
   @JsonKey(name: 'ai_improvement')
-  String? get aiImprovement => throw _privateConstructorUsedError;
+  String? get aiImprovement =>
+      throw _privateConstructorUsedError; // Renamed field
+  @JsonKey(name: 'adequate_lighting')
+  bool? get adequateLighting => throw _privateConstructorUsedError; // New field
+  @JsonKey(name: 'pathway_clearance')
+  bool? get pathwayClearance => throw _privateConstructorUsedError; // New field
+  @JsonKey(name: 'government_advice')
+  String? get governmentAdvice =>
+      throw _privateConstructorUsedError; // New field
+  @JsonKey(name: 'low_cost_improvements')
+  String? get lowCostImprovements =>
+      throw _privateConstructorUsedError; // New field
+  @JsonKey(name: 'offensive_content_check')
+  bool? get offensiveContentCheck =>
+      throw _privateConstructorUsedError; // New field
+  @JsonKey(name: 'latitude')
+  double? get latitude => throw _privateConstructorUsedError; // New field
+  @JsonKey(name: 'longitude')
+  double? get longitude => throw _privateConstructorUsedError; // New field
+  @JsonKey(name: 'address')
+  String? get address => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +74,15 @@ abstract class $WayDataCopyWith<$Res> {
       @JsonKey(name: 'details') String? details,
       @JsonKey(name: 'alternative_route') String? alternativeRoute,
       @JsonKey(name: 'objects_from_right_to_left') List<String>? objects,
-      @JsonKey(name: 'ai_improvement') String? aiImprovement});
+      @JsonKey(name: 'ai_improvement') String? aiImprovement,
+      @JsonKey(name: 'adequate_lighting') bool? adequateLighting,
+      @JsonKey(name: 'pathway_clearance') bool? pathwayClearance,
+      @JsonKey(name: 'government_advice') String? governmentAdvice,
+      @JsonKey(name: 'low_cost_improvements') String? lowCostImprovements,
+      @JsonKey(name: 'offensive_content_check') bool? offensiveContentCheck,
+      @JsonKey(name: 'latitude') double? latitude,
+      @JsonKey(name: 'longitude') double? longitude,
+      @JsonKey(name: 'address') String? address});
 }
 
 /// @nodoc
@@ -77,6 +105,14 @@ class _$WayDataCopyWithImpl<$Res, $Val extends WayData>
     Object? alternativeRoute = freezed,
     Object? objects = freezed,
     Object? aiImprovement = freezed,
+    Object? adequateLighting = freezed,
+    Object? pathwayClearance = freezed,
+    Object? governmentAdvice = freezed,
+    Object? lowCostImprovements = freezed,
+    Object? offensiveContentCheck = freezed,
+    Object? latitude = freezed,
+    Object? longitude = freezed,
+    Object? address = freezed,
   }) {
     return _then(_value.copyWith(
       safetyPercentage: freezed == safetyPercentage
@@ -107,6 +143,38 @@ class _$WayDataCopyWithImpl<$Res, $Val extends WayData>
           ? _value.aiImprovement
           : aiImprovement // ignore: cast_nullable_to_non_nullable
               as String?,
+      adequateLighting: freezed == adequateLighting
+          ? _value.adequateLighting
+          : adequateLighting // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      pathwayClearance: freezed == pathwayClearance
+          ? _value.pathwayClearance
+          : pathwayClearance // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      governmentAdvice: freezed == governmentAdvice
+          ? _value.governmentAdvice
+          : governmentAdvice // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lowCostImprovements: freezed == lowCostImprovements
+          ? _value.lowCostImprovements
+          : lowCostImprovements // ignore: cast_nullable_to_non_nullable
+              as String?,
+      offensiveContentCheck: freezed == offensiveContentCheck
+          ? _value.offensiveContentCheck
+          : offensiveContentCheck // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      latitude: freezed == latitude
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double?,
+      longitude: freezed == longitude
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double?,
+      address: freezed == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -125,7 +193,15 @@ abstract class _$$WayDataImplCopyWith<$Res> implements $WayDataCopyWith<$Res> {
       @JsonKey(name: 'details') String? details,
       @JsonKey(name: 'alternative_route') String? alternativeRoute,
       @JsonKey(name: 'objects_from_right_to_left') List<String>? objects,
-      @JsonKey(name: 'ai_improvement') String? aiImprovement});
+      @JsonKey(name: 'ai_improvement') String? aiImprovement,
+      @JsonKey(name: 'adequate_lighting') bool? adequateLighting,
+      @JsonKey(name: 'pathway_clearance') bool? pathwayClearance,
+      @JsonKey(name: 'government_advice') String? governmentAdvice,
+      @JsonKey(name: 'low_cost_improvements') String? lowCostImprovements,
+      @JsonKey(name: 'offensive_content_check') bool? offensiveContentCheck,
+      @JsonKey(name: 'latitude') double? latitude,
+      @JsonKey(name: 'longitude') double? longitude,
+      @JsonKey(name: 'address') String? address});
 }
 
 /// @nodoc
@@ -146,6 +222,14 @@ class __$$WayDataImplCopyWithImpl<$Res>
     Object? alternativeRoute = freezed,
     Object? objects = freezed,
     Object? aiImprovement = freezed,
+    Object? adequateLighting = freezed,
+    Object? pathwayClearance = freezed,
+    Object? governmentAdvice = freezed,
+    Object? lowCostImprovements = freezed,
+    Object? offensiveContentCheck = freezed,
+    Object? latitude = freezed,
+    Object? longitude = freezed,
+    Object? address = freezed,
   }) {
     return _then(_$WayDataImpl(
       safetyPercentage: freezed == safetyPercentage
@@ -176,6 +260,38 @@ class __$$WayDataImplCopyWithImpl<$Res>
           ? _value.aiImprovement
           : aiImprovement // ignore: cast_nullable_to_non_nullable
               as String?,
+      adequateLighting: freezed == adequateLighting
+          ? _value.adequateLighting
+          : adequateLighting // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      pathwayClearance: freezed == pathwayClearance
+          ? _value.pathwayClearance
+          : pathwayClearance // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      governmentAdvice: freezed == governmentAdvice
+          ? _value.governmentAdvice
+          : governmentAdvice // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lowCostImprovements: freezed == lowCostImprovements
+          ? _value.lowCostImprovements
+          : lowCostImprovements // ignore: cast_nullable_to_non_nullable
+              as String?,
+      offensiveContentCheck: freezed == offensiveContentCheck
+          ? _value.offensiveContentCheck
+          : offensiveContentCheck // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      latitude: freezed == latitude
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double?,
+      longitude: freezed == longitude
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double?,
+      address: freezed == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -190,7 +306,15 @@ class _$WayDataImpl implements _WayData {
       @JsonKey(name: 'details') this.details,
       @JsonKey(name: 'alternative_route') this.alternativeRoute,
       @JsonKey(name: 'objects_from_right_to_left') final List<String>? objects,
-      @JsonKey(name: 'ai_improvement') this.aiImprovement})
+      @JsonKey(name: 'ai_improvement') this.aiImprovement,
+      @JsonKey(name: 'adequate_lighting') this.adequateLighting,
+      @JsonKey(name: 'pathway_clearance') this.pathwayClearance,
+      @JsonKey(name: 'government_advice') this.governmentAdvice,
+      @JsonKey(name: 'low_cost_improvements') this.lowCostImprovements,
+      @JsonKey(name: 'offensive_content_check') this.offensiveContentCheck,
+      @JsonKey(name: 'latitude') this.latitude,
+      @JsonKey(name: 'longitude') this.longitude,
+      @JsonKey(name: 'address') this.address})
       : _objects = objects;
 
   factory _$WayDataImpl.fromJson(Map<String, dynamic> json) =>
@@ -229,10 +353,42 @@ class _$WayDataImpl implements _WayData {
   @override
   @JsonKey(name: 'ai_improvement')
   final String? aiImprovement;
+// Renamed field
+  @override
+  @JsonKey(name: 'adequate_lighting')
+  final bool? adequateLighting;
+// New field
+  @override
+  @JsonKey(name: 'pathway_clearance')
+  final bool? pathwayClearance;
+// New field
+  @override
+  @JsonKey(name: 'government_advice')
+  final String? governmentAdvice;
+// New field
+  @override
+  @JsonKey(name: 'low_cost_improvements')
+  final String? lowCostImprovements;
+// New field
+  @override
+  @JsonKey(name: 'offensive_content_check')
+  final bool? offensiveContentCheck;
+// New field
+  @override
+  @JsonKey(name: 'latitude')
+  final double? latitude;
+// New field
+  @override
+  @JsonKey(name: 'longitude')
+  final double? longitude;
+// New field
+  @override
+  @JsonKey(name: 'address')
+  final String? address;
 
   @override
   String toString() {
-    return 'WayData(safetyPercentage: $safetyPercentage, proceedPhrase: $proceedPhrase, roadType: $roadType, details: $details, alternativeRoute: $alternativeRoute, objects: $objects, aiImprovement: $aiImprovement)';
+    return 'WayData(safetyPercentage: $safetyPercentage, proceedPhrase: $proceedPhrase, roadType: $roadType, details: $details, alternativeRoute: $alternativeRoute, objects: $objects, aiImprovement: $aiImprovement, adequateLighting: $adequateLighting, pathwayClearance: $pathwayClearance, governmentAdvice: $governmentAdvice, lowCostImprovements: $lowCostImprovements, offensiveContentCheck: $offensiveContentCheck, latitude: $latitude, longitude: $longitude, address: $address)';
   }
 
   @override
@@ -251,7 +407,22 @@ class _$WayDataImpl implements _WayData {
                 other.alternativeRoute == alternativeRoute) &&
             const DeepCollectionEquality().equals(other._objects, _objects) &&
             (identical(other.aiImprovement, aiImprovement) ||
-                other.aiImprovement == aiImprovement));
+                other.aiImprovement == aiImprovement) &&
+            (identical(other.adequateLighting, adequateLighting) ||
+                other.adequateLighting == adequateLighting) &&
+            (identical(other.pathwayClearance, pathwayClearance) ||
+                other.pathwayClearance == pathwayClearance) &&
+            (identical(other.governmentAdvice, governmentAdvice) ||
+                other.governmentAdvice == governmentAdvice) &&
+            (identical(other.lowCostImprovements, lowCostImprovements) ||
+                other.lowCostImprovements == lowCostImprovements) &&
+            (identical(other.offensiveContentCheck, offensiveContentCheck) ||
+                other.offensiveContentCheck == offensiveContentCheck) &&
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude) &&
+            (identical(other.address, address) || other.address == address));
   }
 
   @JsonKey(ignore: true)
@@ -264,7 +435,15 @@ class _$WayDataImpl implements _WayData {
       details,
       alternativeRoute,
       const DeepCollectionEquality().hash(_objects),
-      aiImprovement);
+      aiImprovement,
+      adequateLighting,
+      pathwayClearance,
+      governmentAdvice,
+      lowCostImprovements,
+      offensiveContentCheck,
+      latitude,
+      longitude,
+      address);
 
   @JsonKey(ignore: true)
   @override
@@ -288,8 +467,16 @@ abstract class _WayData implements WayData {
       @JsonKey(name: 'details') final String? details,
       @JsonKey(name: 'alternative_route') final String? alternativeRoute,
       @JsonKey(name: 'objects_from_right_to_left') final List<String>? objects,
-      @JsonKey(name: 'ai_improvement')
-      final String? aiImprovement}) = _$WayDataImpl;
+      @JsonKey(name: 'ai_improvement') final String? aiImprovement,
+      @JsonKey(name: 'adequate_lighting') final bool? adequateLighting,
+      @JsonKey(name: 'pathway_clearance') final bool? pathwayClearance,
+      @JsonKey(name: 'government_advice') final String? governmentAdvice,
+      @JsonKey(name: 'low_cost_improvements') final String? lowCostImprovements,
+      @JsonKey(name: 'offensive_content_check')
+      final bool? offensiveContentCheck,
+      @JsonKey(name: 'latitude') final double? latitude,
+      @JsonKey(name: 'longitude') final double? longitude,
+      @JsonKey(name: 'address') final String? address}) = _$WayDataImpl;
 
   factory _WayData.fromJson(Map<String, dynamic> json) = _$WayDataImpl.fromJson;
 
@@ -314,6 +501,30 @@ abstract class _WayData implements WayData {
   @override // Renamed field
   @JsonKey(name: 'ai_improvement')
   String? get aiImprovement;
+  @override // Renamed field
+  @JsonKey(name: 'adequate_lighting')
+  bool? get adequateLighting;
+  @override // New field
+  @JsonKey(name: 'pathway_clearance')
+  bool? get pathwayClearance;
+  @override // New field
+  @JsonKey(name: 'government_advice')
+  String? get governmentAdvice;
+  @override // New field
+  @JsonKey(name: 'low_cost_improvements')
+  String? get lowCostImprovements;
+  @override // New field
+  @JsonKey(name: 'offensive_content_check')
+  bool? get offensiveContentCheck;
+  @override // New field
+  @JsonKey(name: 'latitude')
+  double? get latitude;
+  @override // New field
+  @JsonKey(name: 'longitude')
+  double? get longitude;
+  @override // New field
+  @JsonKey(name: 'address')
+  String? get address;
   @override
   @JsonKey(ignore: true)
   _$$WayDataImplCopyWith<_$WayDataImpl> get copyWith =>

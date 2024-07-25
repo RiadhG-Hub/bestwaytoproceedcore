@@ -17,6 +17,14 @@ _$WayDataImpl _$$WayDataImplFromJson(Map<String, dynamic> json) =>
           ?.map((e) => e as String)
           .toList(),
       aiImprovement: json['ai_improvement'] as String?,
+      adequateLighting: json['adequate_lighting'] as bool?,
+      pathwayClearance: json['pathway_clearance'] as bool?,
+      governmentAdvice: json['government_advice'] as String?,
+      lowCostImprovements: json['low_cost_improvements'] as String?,
+      offensiveContentCheck: json['offensive_content_check'] as bool?,
+      latitude: (json['latitude'] as num?)?.toDouble(),
+      longitude: (json['longitude'] as num?)?.toDouble(),
+      address: json['address'] as String?,
     );
 
 Map<String, dynamic> _$$WayDataImplToJson(_$WayDataImpl instance) =>
@@ -28,4 +36,12 @@ Map<String, dynamic> _$$WayDataImplToJson(_$WayDataImpl instance) =>
       'alternative_route': instance.alternativeRoute,
       'objects_from_right_to_left': instance.objects,
       'ai_improvement': instance.aiImprovement,
+      'adequate_lighting': instance.adequateLighting,
+      'pathway_clearance': instance.pathwayClearance,
+      'government_advice': instance.governmentAdvice,
+      'low_cost_improvements': instance.lowCostImprovements,
+      'offensive_content_check': instance.offensiveContentCheck,
+      'latitude': instance.latitude,
+      'longitude': instance.longitude,
+      'address': instance.address,
     };
