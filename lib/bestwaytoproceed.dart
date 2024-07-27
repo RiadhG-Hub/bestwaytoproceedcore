@@ -24,46 +24,69 @@ class ImageComparison {
   /// and other elements affecting safety and navigation.
   ///
   /// Returns `null` if an error occurs.
-  Future<WayData?> analyzeImage(
-    XFile image,
-    String? position,
-  ) async {
+  Future<WayData?> analyzeImage({required XFile image, String? position, bool? quickAnalyse = false}) async {
     try {
+      late final GenerateContentResponse? response;
+
       final imageBytes = await image.readAsBytes();
 
       final model = GenerativeModel(
+        model: 'gemini-1.5-flash',
+        apiKey: apiKey,
+      );
+
+      final prompt = TextPart(""
+          "Analyze the provided images and determine if the scene represents a safe and appropriate time for a blind person to proceed."
+          " Consider the presence of clear pathways, absence of obstacles, adequate lighting, and any other elements that might affect safety and ease of navigation."
+          "Please provide a detailed explanation of your analysis."
+          "Provide the percentage of safety for the next 5 meters."
+          "Describe the best way to proceed in a short phrase."
+          "Consider whether the road is intended for pedestrians or vehicles."
+          "Suggest advice for the government to improve indications."
+          "Suggest an idea for government improvements that would likely cost less than 100 USD."
+          "Suggest advice to improve the accuracy of the output for the next use to add it here."
+          "List the objects in the image from right to left."
+          "don't mention blind word or something can be considered as a Offense or discrimination to blind people in your analyze"
+          "Return all data only in a developed JSON format and remove the JSON word, keeping this form as a model ${jsonEncode(const WayData(
+        safetyPercentage: 40,
+        proceedPhrase: 'example',
+        adequateLighting: false,
+        pathwayClearance: false,
+        roadType: 'example',
+        objects: ["a wall", "a dore", "a care", "keys", "obstacle"],
+        alternativeRoute: "example",
+        aiImprovement: "example",
+      ).toJson())}.");
+
+      final proModel = GenerativeModel(
         model: 'gemini-1.5-pro',
         apiKey: apiKey,
         generationConfig: GenerationConfig(
           responseMimeType: "application/json",
-          responseSchema: Schema(SchemaType.object,
-              requiredProperties: const WayData().toJson().keys.toList(),
-              properties: {
-                "safety_percentage": Schema.integer(),
-                "proceed_phrase": Schema.string(),
-                "road_type": Schema.string(),
-                "details": Schema.string(),
-                "alternative_route": Schema.string(),
-                "objects_from_right_to_left":
-                    Schema.array(items: Schema.string()),
-                "ai_improvement": Schema.string(),
-                "adequate_lighting": Schema.boolean(),
-                "pathway_clearance": Schema.boolean(),
-                "government_advice": Schema.string(),
-                "low_cost_improvements": Schema.string(),
-                "offensive_content_check": Schema.boolean(),
-                "address": Schema.string(description: position),
-                "latitude": Schema.number(
-                    description:
-                        "return the same value of ${(position == '' ? '0.0' : position)} latitude"),
-                "longitude": Schema.number(
-                    description:
-                        "return the same value of ${(position == '' ? '0.0' : position)} longitude")
-              }),
+          responseSchema:
+              Schema(SchemaType.object, requiredProperties: const WayData().toJson().keys.toList(), properties: {
+            "safety_percentage": Schema.integer(),
+            "proceed_phrase": Schema.string(),
+            "road_type": Schema.string(),
+            "details": Schema.string(),
+            "alternative_route": Schema.string(),
+            "objects_from_right_to_left": Schema.array(items: Schema.string()),
+            "ai_improvement": Schema.string(),
+            "adequate_lighting": Schema.boolean(),
+            "pathway_clearance": Schema.boolean(),
+            "government_advice": Schema.string(),
+            "low_cost_improvements": Schema.string(),
+            "offensive_content_check": Schema.boolean(),
+            "address": Schema.string(description: position),
+            "latitude":
+                Schema.number(description: "return the same value of ${(position == '' ? '0.0' : position)} latitude"),
+            "longitude":
+                Schema.number(description: "return the same value of ${(position == '' ? '0.0' : position)} longitude")
+          }),
         ),
       );
 
-      final prompt = TextPart(
+      final proModelPrompt = TextPart(
           "Analyze the provided images and determine if the scene represents a safe and appropriate time for a blind person to proceed."
           " Consider the presence of clear pathways, absence of obstacles, adequate lighting, and any other elements that might affect safety and ease of navigation."
           " Please provide a detailed explanation of your analysis."
@@ -78,10 +101,15 @@ class ImageComparison {
           " Don't mention the word blind or anything that can be considered offensive or discriminatory to blind people in your analysis.");
 
       final imageParts = [DataPart('image/jpeg', imageBytes)];
-
-      final response = await model.generateContent([
-        Content.multi([prompt, ...imageParts])
-      ]);
+      if (quickAnalyse ?? false) {
+        response = await model.generateContent([
+          Content.multi([prompt, ...imageParts])
+        ]);
+      } else {
+        response = await proModel.generateContent([
+          Content.multi([proModelPrompt, ...imageParts])
+        ]);
+      }
 
       final result = response.text;
       final jsonResult = jsonDecode(result!);
