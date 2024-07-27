@@ -12,7 +12,6 @@ dependencies:
   flutter:
     sdk: flutter
   google_generative_ai: ^0.4.3  # Google's Generative AI package for Dart.
-  image_picker: ^1.1.2  # A Flutter plugin for picking images from the image library, and taking new pictures with the camera.
   build_runner: ^2.4.11  # A build system for Dart code generation.
   freezed: ^2.5.2  # Code generation for immutable classes in Dart.
   freezed_annotation: ^2.4.2  # Annotations for freezed package.
