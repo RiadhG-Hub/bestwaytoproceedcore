@@ -36,26 +36,30 @@ class ImageComparison {
         apiKey: apiKey,
         generationConfig: GenerationConfig(
           responseMimeType: "application/json",
-          responseSchema:
-              Schema(SchemaType.object, requiredProperties: const WayData().toJson().keys.toList(), properties: {
-            "safety_percentage": Schema.integer(),
-            "proceed_phrase": Schema.string(),
-            "road_type": Schema.string(),
-            "details": Schema.string(),
-            "alternative_route": Schema.string(),
-            "objects_from_right_to_left": Schema.array(items: Schema.string()),
-            "ai_improvement": Schema.string(),
-            "adequate_lighting": Schema.boolean(),
-            "pathway_clearance": Schema.boolean(),
-            "government_advice": Schema.string(),
-            "low_cost_improvements": Schema.string(),
-            "offensive_content_check": Schema.boolean(),
-            "address": Schema.string(description: position),
-            "latitude":
-                Schema.number(description: "return the same value of ${(position == '' ? '0.0' : position)} latitude"),
-            "longitude":
-                Schema.number(description: "return the same value of ${(position == '' ? '0.0' : position)} longitude")
-          }),
+          responseSchema: Schema(SchemaType.object,
+              requiredProperties: const WayData().toJson().keys.toList(),
+              properties: {
+                "safety_percentage": Schema.integer(),
+                "proceed_phrase": Schema.string(),
+                "road_type": Schema.string(),
+                "details": Schema.string(),
+                "alternative_route": Schema.string(),
+                "objects_from_right_to_left":
+                    Schema.array(items: Schema.string()),
+                "ai_improvement": Schema.string(),
+                "adequate_lighting": Schema.boolean(),
+                "pathway_clearance": Schema.boolean(),
+                "government_advice": Schema.string(),
+                "low_cost_improvements": Schema.string(),
+                "offensive_content_check": Schema.boolean(),
+                "address": Schema.string(description: position),
+                "latitude": Schema.number(
+                    description:
+                        "return the same value of ${(position == '' ? '0.0' : position)} latitude"),
+                "longitude": Schema.number(
+                    description:
+                        "return the same value of ${(position == '' ? '0.0' : position)} longitude")
+              }),
         ),
       );
 
